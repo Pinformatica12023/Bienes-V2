@@ -24,9 +24,9 @@ app.use(express.urlencoded({ extended: true}));
 // Middleware que se encarga de comprobar si un usuario
 // debe iniciar sesión
 const requireAuthentication = async(req, res, next) => {
-    if(req.session && req.session.UserId) {
+    if(req.session && req.session.userId) {
         try {
-            const user = await User.findByPk(req.session.UserId);
+            const user = await User.findByPk(req.session.userId);
 
             if(user) {
                 req.user = user;
@@ -47,7 +47,7 @@ const requireAuthentication = async(req, res, next) => {
 
 // Ruta a la página principal
 app.get("/", requireAuthentication, async (req, res) => {
-    res.redirect("Index", { user: req.user });
+    res.render("index", { user: req.user });
 });
 
 // Ruta de formulario de registro de usuario
@@ -57,7 +57,7 @@ app.get("/signUp", (req, res) => {
 
 // Ruta que guarda el usuario en la base de datos
 
-app.post("/user", async(req, res) => {
+app.post("/users", async(req, res) => {
     try {
         const user = User.build(req.body);
 
@@ -65,7 +65,7 @@ app.post("/user", async(req, res) => {
 
         //Con esto el nuevo usuario no tiene que iniciar sesión
 
-        req.session.UserId = user.id;
+        req.session.userId = user.id;
         req.user = user;
         
         res.redirect("/");
@@ -80,23 +80,23 @@ app.get("/signIn", (req, res) => {
 });
 
 // Ruta para iniciar sesión 
-app.post("/sessions", async(req, res) => {
+app.post("/sessions", async (req, res) => {
     try {
-        const { user_name, password} = req.body;
-        const user = await User.findOne({ where : { user_name } });
-
-        // .authenticate es una función definida en modelo del User
-        if (user && user.authenticate(password)) {
-            req.session.UserId = user.id;
-
-            res.redirect("/");
-        } else {
-            res.render("signIn", { error: "Usuario o Contraseña incorrecto"});
-        }
-    } catch (error) {
-        throw error;
+      const { user_name, password } = req.body;
+      const user = await User.findOne({ where: { user_name } });
+  
+      // .autenticate es una funciona definida en el modelo User
+      if (user && user.authenticate(password)) {
+        req.session.userId = user.id;
+  
+        res.redirect("/");
+      } else {
+        res.render("signIn", { error: "Usuario o Contraseña incorrecta" });
+      }
+    } catch(error) {
+      throw error;
     }
-});
+  });
 
 // Ruta para cerrar sesión 
 app.get("/signOut", requireAuthentication, (req, res) => {
@@ -106,17 +106,19 @@ app.get("/signOut", requireAuthentication, (req, res) => {
 });
 
 // Ruta para listar los usuarios
-app.get("/users", requireAuthentication, async(req, res) => {
+app.get("/users", requireAuthentication, async (req, res) => {
     try {
         const users = await User.findAll();
 
-        res.render("users/index", { equipment, user: req.user });
+        res.render("users/index", { users, user: req.user });
     } catch(error) {
         throw error;
     }
 });
 
-// Acá debe ir las demas rutas para listar en este caso para listar funcionarios y sus activos
+
+
+// fin de rutas 
 
 // Función para iniciar la aplicación
 const init = async () => {

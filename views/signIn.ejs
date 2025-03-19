@@ -8,6 +8,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" href="/img/logo_FLA.png">
         <style>
                 .logo {
                     display: block;
@@ -16,19 +17,20 @@
     </head>
     <body>
         <div class="login">
-            <% if (error) { %> 
-            <div>
-                <h2 style="color: red;"><%= error %></h2>
-            </div>
-            <% } %>
             <div class="form-container">
 
                 <img src="/img/logofla.png" alt="logo" class="logo">
-                <h1 class="tittle">Bienes</h1>
+                <h1 class="tittle">Inventario Bienes</h1>
+
+                <% if (error) { %> 
+                    <div>
+                        <h2 style="color: red;"><%= error %></h2>
+                    </div>
+                <% } %>
 
                 <form action="/sessions" method="post" class="form">
-                    <label for="User" class="label">Usuario</label>
-                    <input type="text" name="user"  required class="input">
+                    <label for="user_name" class="label">Usuario</label>
+                    <input type="text" name="user_name"  required class="input">
 
                     <label for="password" class="label">Contraseña</label>
                     <input type="password" name="password"  required class="input">

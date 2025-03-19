@@ -13,9 +13,10 @@
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
-    color: var(--primary-color);
+    color: var(--black);
     background-image: url(/img/fla_inicio.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
 }
 .login {
     width: 100%;
@@ -81,6 +82,45 @@ body {
 .loss a, .new-user a {
     text-decoration: none;
     text-align: center;
-    color: var(--other-color)
+    color: var(--black)
 }
 /*main page*/
+nav {
+    max-width: 900px;
+    margin: 50px auto;
+}
+.nav-container {
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    padding-top: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.horizontal-currency {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+.horizontal-currency > li > a {
+    text-decoration: none;
+    color: var(--black)
+}
+.vertical-menu {
+    position: absolute;
+    display: none;
+    list-style: none;
+    width: 200px;
+}
+.horizontal-currency li:hover .vertical-menu {
+    display: block;
+}
+.vertical-menu li a {
+    display: block;
+    color: var(--primary-color);
+    padding: 15px 15px 15px 15px;
+    text-decoration: none;
+}
+.img-logo {
+    height: 40px;
+    width: 80px;
+    margin: -20px -50px -10px -50px;
+}
