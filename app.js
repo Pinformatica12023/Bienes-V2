@@ -2,7 +2,7 @@
 import express from "express";
 import session from "express-session";
 import databaseConnection from "./config/database.js";
-
+import Position from "./models/position.js";
 import User from "./models/user.js";
 
 const app = express();
@@ -116,7 +116,34 @@ app.get("/users", requireAuthentication, async (req, res) => {
     }
 });
 
+// Ruta para listar los funcionarios
+app.get("/positions", requireAuthentication, async (req, res) => {
+    try{
+        const position = await Position.findAll();
 
+        res.render("positions/index", { position, user: req.user });
+    } catch(error) {
+        next(error);
+    }
+});
+
+// Ruta para agregar un nuevo funcionario
+app.get("/positions/new", requireAuthentication, (req, res) => {
+    res.render("positions/new", { user: req.user });
+});
+
+// Ruta para crear un nuevo funcionario
+app.post("/positions", requireAuthentication, async (req, res) => {
+    try {
+        const position = Position.build(req.body);
+
+        await position.save();
+
+        res.redirect("/positions");
+    } catch(errro) {
+        next(error);
+    }
+});
 
 // fin de rutas 
 

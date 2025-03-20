@@ -4,34 +4,44 @@ import databaseConnection from "../config/database.js";
 const schema = {
     id: {
         type: DataTypes.BIGINT,
-        notNull: false,
-        unique: true,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    identification: {
-        type: DataTypes.BIGINT,
-        allowNull: false,
-        unique:true /*Este dato es necesario o con el id unique es suficiente?*/
-    },
-    email: {
-        type: DataTypes.STRING, /*No es necesario ingresar la cantidad del string? */
         allowNull: false,
         unique: true,
-        validate: {
-            isEmail: true
-        },
+        autoInvrement: true
     },
     name: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
         allowNull: false
     },
-    observation: {
-        type: DataTypes.TEXT,
-        allowNull: true
+    lastName: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
-    status: {
-        type: DataTypes.ENUM('ACTIVO', 'INACTIVO'),
-        defaultValue: 'ACTIVO'
+    identificationNumber: {
+        type: DataTypes.BIGINT,
+        allowNull: false,
+        unique: true,
+        primaryKey: true
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    comments: {
+        type: DataTypes.STRING
+    },
+    charge: {
+        type: DataTypes.STRING
+    },
+    subManagement: {
+        type: DataTypes.STRING
+    },
+    dependecy: {
+        type: DataTypes.STRING
     }
 }
+
+class Position extends Model {}
+
+Position.init(schema, { sequelize: databaseConnection });
+
+export default Position;

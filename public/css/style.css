@@ -124,3 +124,45 @@ nav {
     width: 80px;
     margin: -20px -50px -10px -50px;
 }
+.sub-title {
+    max-width: 900px;
+    margin: 50px auto;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+
+/* Tabla */
+.table {
+    width: 80%;
+    margin:auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+.table thead {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: left;
+}
+.table th {
+    padding: 12px 15px;
+    text-align: center;
+}
+.table tbody tr:nth-child(odd) {
+    background-color: var(--neutral-color);
+}
+.table tbody tr:nth-child(even) {
+    background-color: var(--neutral-color);
+}
+.table th, .table td {
+    border: 1px solid #ddd;
+}
+.table td:empty {
+    background-color: var(--white);
+}
