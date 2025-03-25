@@ -24,10 +24,10 @@
                     </a>
                 </li> 
                 <li><a href="/positions">Funcionarios</a></li>
-                <li><a href="/under_construction.html">Prestamos</a></li>
+                <li><a href="/under_construction.html">Traslados</a></li>
                 <li><a href="/under_construction.html">Correos</a></li>
                 <% if (user) { %>
-                <li><%= user.user_name %></li>
+                <li class="user_title"><%= user.user_name %></li>
                 <li><a href="/signOut">Cerrar sesión</a></li>
                 <% } %>
             </ul>

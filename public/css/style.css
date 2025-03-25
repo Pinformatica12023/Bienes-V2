@@ -58,7 +58,7 @@ body {
 }
 .input {
     background-color: var(--neutral-color);
-    border: none;
+    border-color: rgb(219, 216, 216);
     border-radius: 8px;
     height: 30px;
     font-size: var(--md);
@@ -133,6 +133,9 @@ nav {
     background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
 }
+.user_title {
+    color: var(--primary-color);
+}
 
 /* Tabla */
 .table {
@@ -150,9 +153,10 @@ nav {
     color: var(--white);
     text-align: left;
 }
-.table th {
+.table th, .table td, .icon-buttom {
     padding: 12px 15px;
     text-align: center;
+    text-decoration: none;
 }
 .table tbody tr:nth-child(odd) {
     background-color: var(--neutral-color);
@@ -165,4 +169,48 @@ nav {
 }
 .table td:empty {
     background-color: var(--white);
+}
+/* .table-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 100px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+} */
+
+.icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+/* Contenedor de nuevo funcionario */
+.new-container {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    border-radius: 50% var(--neutral-color);  
+}
+/*Botones*/
+.button {
+    padding: 0.75rem 1.5rem;
+    min-width: 10ch; 
+    min-height: 44px;
+    margin: 15px auto;
+    font-size: 16px;
+    font-weight: bold;
+    border-color: var(--secondary-color);
+    border-radius: 5px;
+}
+.button-user {
+    padding: 0.75rem 1.5rem;
+    min-width: 10ch; 
+    min-height: 44px;
+    margin: 15px auto;
+    font-size: 16px;
+    font-weight: bold;
+    border-color: var(--secondary-color);
+    border-radius: 5px;
+    background-image: url("/img/user_icon.png") ;
 }

@@ -19,35 +19,35 @@
 
         <div>
             <h1 class="sub-title">Funcionarios</h1>
-
        </div>
 
        <div class="new-container">
-        
+
             <div class="form-container">
                 <img src="/img/logo_FLA.png" alt="logo" class="logo">
+                <h1 class="title">Editando funcionario: <%= position.nombres %></h1>
 
-                <form action="/positions" method="post" class="form">
+                <form action="/positions/<%= position.id %>" method="post" class="form">
 
                     <label for="identification" class="label">Identificación</label>
-                    <input type="number" name="identification"  required class="input">
+                    <input type="number" name="identification"  required class="input" value="<%= position.identification %>">
 
                     <label for="nombres" class="label">Nombre</label>
-                    <input type="text" name="nombres"  required class="input">
+                    <input type="text" name="nombres"  required class="input" value="<%= position.nombres %>"
 
                     <label for="email" class="label">Email</label>
-                    <input type="text" name="email"  required class="input">
+                    <input type="text" name="email"  required class="input" value="<%= position.email %>">
 
                     <label for="observations" class="label">Observaciones</label>
-                    <input type="text" name="observations"  required class="input">
-
-                    <button type="submit" class="button">
-                        <i class="icon-buttom"><img src="/img/user_icon.png" alt="user-button" class="icon">   Agregar</i>
-                    </button>
-
-                    <!-- <input type="submit" value="Agregar" class="button"> -->
+                    <input type="text" name="observations"  required class="input" value="<%= position.observations %>">
 
                     <button class="button">
+                        <a href="/positions" class="icon-buttom">
+                            <img src="/img/user_icon.png" alt="user-button" class="icon">   <input type="submit" value="Editar" class="submit">
+                        </a>
+                   </button>
+
+                   <button class="button">
                         <a href="/positions" class="icon-buttom">
                             <img src="/img/cancel_icon.png" alt="user-button" class="icon">   Cancelar</a>
                     </button>
@@ -55,6 +55,7 @@
                 </form>
             
             </div>
+
        </div>
 
     </body>

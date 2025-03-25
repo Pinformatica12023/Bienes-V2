@@ -140,8 +140,45 @@ app.post("/positions", requireAuthentication, async (req, res) => {
         await position.save();
 
         res.redirect("/positions");
-    } catch(errro) {
+    } catch(error) {
         next(error);
+    }
+});
+
+// Ruta para la edición de funcionario
+app.get("/positions/:id/edit", requireAuthentication, async (req, res) => {
+    try {
+        const position = await Position.findByPk(req.params.id);
+
+        res.render("positions/edit", { position, user: req.user});
+    } catch(error) {
+        next(error);
+    }
+});
+
+// Ruta para actualizar la información del funcionario
+app.post("/positions/:id", requireAuthentication, async (req, res) => {
+    try {
+        const position = await Position.findByPk(req.params.id);
+
+        await position.update(req.body);
+
+        res.redirect("/positions");
+    } catch(error) {
+        next(error);
+    }
+});
+
+// Ruta para eliminar un funcionario
+app.get("/positions/:id/delete", requireAuthentication, async (req, res) => {
+    try {
+        const position = await Position.findByPk(req.params.id);
+
+        await position.destroy();
+
+        res.redirect("/positions");
+    } catch(error) {
+        throw error;
     }
 });
 

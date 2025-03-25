@@ -18,28 +18,49 @@
     <body>
 
        <div>
-            <h1 class="sub-title">Funcionarios</h1>
+            <h1 class="sub-title">
+                <img src="/img/logo_FLA.png" alt="" class="img-logo">Funcionarios</h1>
        </div>
 
        <button class="button">
-            <a href="/positions/new">Agregar👤</a>
+            <a href="/positions/new" class="icon-buttom">
+            <img src="/img/user_icon.png" alt="user-button" class="icon">   Agregar</a>
        </button>
 
        <button class="button">
-            <a href="/">Finalizar⬅️</a>
+            <a href="/" class="icon-buttom">
+                <img src="/img/cancel_icon.png" alt="user-button" class="icon">   Cancelar</a>
        </button>
+
        
-       <table class="table">
-            <thead>
-                <tr>
-                    <th>Identificación</th>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>Cargo</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-       </table> 
+       <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Identificación</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Cargo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% position.forEach(device => { %>
+                    <tr>
+                        <td><%= device.identification%></td>
+                        <td><%= device.nombres%></td>
+                        <td><%= device.email %></td>
+                        <td><%= device.state %></td>
+                        <td>
+                            <a href="/positions/<%= device.id %>/edit" class="icon-buttom">
+                                <img src="/img/edit_icon.png" alt="edit-buttom" class="icon">   Editar</a>
+                            <!-- <a href="/positions/<%= device.id %>/delete">Eliminar</a> -->
+                        </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+        </table>
+       </div>
 
     </body>
 </html>
