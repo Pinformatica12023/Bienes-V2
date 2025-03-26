@@ -1,19 +1,14 @@
 import { DataTypes, Model } from "sequelize";
 import databaseConnection from "../config/database.js";
 
-/*
 const schema = {
     id: {
         type: DataTypes.BIGINT,
         allowNull: false,
         unique: true,
-        autoInvrement: true
+        autoIncrement: true
     },
     name: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    lastName: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -40,8 +35,8 @@ const schema = {
         type: DataTypes.STRING
     }
 }
-*/
 
+/*
 const schema = {
     id: {
         type: DataTypes.BIGINT,
@@ -74,6 +69,7 @@ const schema = {
        defaultValue: 'ACTIVO' 
     }
 }
+*/
 
 class Position extends Model {}
 

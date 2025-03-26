@@ -47,14 +47,15 @@
                 <tbody>
                     <% position.forEach(device => { %>
                     <tr>
-                        <td><%= device.identification%></td>
-                        <td><%= device.nombres%></td>
-                        <td><%= device.email %></td>
-                        <td><%= device.state %></td>
+                        <td><%= device.identificationNumber%></td>
+                        <td><%= device.name%></td>
+                        <td><%= device.email%></td>
+                        <td><%= device.charge%></td>
                         <td>
-                            <a href="/positions/<%= device.id %>/edit" class="icon-buttom">
+                            <a href="/positions/<%= device.identificationNumber %>/edit" class="icon-buttom">
                                 <img src="/img/edit_icon.png" alt="edit-buttom" class="icon">   Editar</a>
-                            <!-- <a href="/positions/<%= device.id %>/delete">Eliminar</a> -->
+                            <a href="/positions/<%= device.identificationNumber %>/delete">  
+                                <img src="/img/cancel_icon.png" alt="delete-icon" class="icon">   Eliminar</a>
                         </td>
                     </tr>
                     <% }); %>

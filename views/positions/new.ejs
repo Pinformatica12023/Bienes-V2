@@ -29,17 +29,30 @@
 
                 <form action="/positions" method="post" class="form">
 
-                    <label for="identification" class="label">Identificación</label>
-                    <input type="number" name="identification"  required class="input">
+                    <label for="identificationNumber" class="label">Identificación</label>
+                    <input type="number" name="identificationNumber"  required class="input">
 
-                    <label for="nombres" class="label">Nombre</label>
-                    <input type="text" name="nombres"  required class="input">
+                    <label for="name" class="label">Nombre</label>
+                    <input type="text" name="name"  required class="input">
 
                     <label for="email" class="label">Email</label>
                     <input type="text" name="email"  required class="input">
 
-                    <label for="observations" class="label">Observaciones</label>
-                    <input type="text" name="observations"  required class="input">
+                    <!--
+                    <label for="charge" class="label">Cargo</label>
+                    <input type="text" name="charge" required class="input">
+                    -->
+                
+                    <select name="charge" id="" for="charge">
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="4">4</option>
+                        <option value="">5</option>
+                    </select>
+
+                    <label for="comments" class="label">Observaciones</label>
+                    <input type="text" name="comments"  required class="input">
 
                     <button type="submit" class="button">
                         <i class="icon-buttom"><img src="/img/user_icon.png" alt="user-button" class="icon">   Agregar</i>

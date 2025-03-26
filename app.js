@@ -146,9 +146,9 @@ app.post("/positions", requireAuthentication, async (req, res) => {
 });
 
 // Ruta para la edición de funcionario
-app.get("/positions/:id/edit", requireAuthentication, async (req, res) => {
+app.get("/positions/:identificationNumber/edit", requireAuthentication, async (req, res) => {
     try {
-        const position = await Position.findByPk(req.params.id);
+        const position = await Position.findByPk(req.params.identificationNumber);
 
         res.render("positions/edit", { position, user: req.user});
     } catch(error) {
@@ -157,9 +157,9 @@ app.get("/positions/:id/edit", requireAuthentication, async (req, res) => {
 });
 
 // Ruta para actualizar la información del funcionario
-app.post("/positions/:id", requireAuthentication, async (req, res) => {
+app.post("/positions/:identificationNumber", requireAuthentication, async (req, res) => {
     try {
-        const position = await Position.findByPk(req.params.id);
+        const position = await Position.findByPk(req.params.identificationNumber);
 
         await position.update(req.body);
 
@@ -170,9 +170,9 @@ app.post("/positions/:id", requireAuthentication, async (req, res) => {
 });
 
 // Ruta para eliminar un funcionario
-app.get("/positions/:id/delete", requireAuthentication, async (req, res) => {
+app.get("/positions/:identificationNumber/delete", requireAuthentication, async (req, res) => {
     try {
-        const position = await Position.findByPk(req.params.id);
+        const position = await Position.findByPk(req.params.identificationNumber);
 
         await position.destroy();
 
