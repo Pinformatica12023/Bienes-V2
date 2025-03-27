@@ -17,10 +17,6 @@
     </head>
     <body>
 
-        <div>
-            <h1 class="sub-title">Funcionarios</h1>
-       </div>
-
        <div class="new-container">
 
             <div class="form-container">
@@ -41,8 +37,38 @@
                     <label for="comments" class="label">Observaciones</label>
                     <input type="text" name="comments"  required class="input" value="<%= position.comments %>">
 
-                    <label for="charge" class="label">Cargo</label>
-                    <input type="text" name="charge"  required class="input" value="<%= position.charge %>">
+                    <label for="subManagement" class="label">Subgerencia</label>
+                    <select name="subManagement"  for="subManagement" class="button" value="<%= position.subManagement %>">
+                        <option value="Despacho del gerente">Despacho del gerente</option>
+                        <option value="Secretaria general">Secretaria general</option>
+                        <option value="Subgerencia administrativa y financiera">Subgerencia administrativa y financiera</option>
+                        <option value="Subgerencia comercial">Subgerencia comercial</option>
+                        <option value="Subgerencia mercadeo">Subgerencia mercadeo</option>
+                        <option value="Subgerencia producción">Subgerencia producción</option>
+                    </select>
+
+                    <select name="charge" class="button" for="charge" value="<%= position.charge %>">
+                        <option value="Almacenista general">Almacenista general</option>
+                        <option value="Almacenista T.O">Almacenista T.O</option>
+                        <option value="Auxiliar administrativo">Auxiliar administrativo</option>
+                        <option value="Auxiliar de servicio generales">Auxiliar de servicio generales</option>
+                        <option value="Auxiliar de sostenimiento">Auxiliar de sostenimiento</option>
+                        <option value="Conductor">Conductor</option>
+                        <option value="Contratista">Contratista</option>
+                        <option value="Director administrativo">Director administrativo</option>
+                        <option value="Director operativo">Director operativo</option>
+                        <option value="Gerente">Gerente</option>
+                        <option value="Jefe de oficina">Jefe de oficina</option>
+                        <option value="Operario">Operario</option>
+                        <option value="Practicante">Practicante</option>
+                        <option value="Profesional especializado">Profesional especializado</option>
+                        <option value="Profesional universitario">Profesional universitario</option>
+                        <option value="Secretario">Secretario</option>
+                        <option value="Secretario ejecutivo">Secretario ejecutivo</option>
+                        <option value="Secretario general">Secretario general</option>
+                        <option value="Subgerente">Subgerente</option>
+                        <option value="Técnico operativo">Técnico operativo</option>
+                    </select>
 
                     <button type="submit" class="button">
                         <i class="icon-buttom"><img src="/img/user_icon.png" alt="user-button" class="icon">   Agregar</i>

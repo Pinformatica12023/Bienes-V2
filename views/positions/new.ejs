@@ -17,11 +17,6 @@
     </head>
     <body>
 
-        <div>
-            <h1 class="sub-title">Funcionarios</h1>
-
-       </div>
-
        <div class="new-container">
         
             <div class="form-container">
@@ -38,27 +33,44 @@
                     <label for="email" class="label">Email</label>
                     <input type="text" name="email"  required class="input">
 
-                    <!--
-                    <label for="charge" class="label">Cargo</label>
-                    <input type="text" name="charge" required class="input">
-                    -->
+                    <select name="subManagement" id="" for="subManagement" class="button">
+                        <option value="Despacho del gerente">Despacho del gerente</option>
+                        <option value="Secretaria general">Secretaria general</option>
+                        <option value="Subgerencia administrativa y financiera">Subgerencia administrativa y financiera</option>
+                        <option value="Subgerencia comercial">Subgerencia comercial</option>
+                        <option value="Subgerencia mercadeo">Subgerencia mercadeo</option>
+                        <option value="Subgerencia producción">Subgerencia producción</option>
+                    </select>
                 
-                    <select name="charge" id="" for="charge">
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="4">4</option>
-                        <option value="">5</option>
+                    <select name="charge" id="" for="charge" class="button">
+                        <option value="Almacenista general">Almacenista general</option>
+                        <option value="Almacenista T.O">Almacenista T.O</option>
+                        <option value="Auxiliar administrativo">Auxiliar administrativo</option>
+                        <option value="Auxiliar de servicio generales">Auxiliar de servicio generales</option>
+                        <option value="Auxiliar de sostenimiento">Auxiliar de sostenimiento</option>
+                        <option value="Conductor">Conductor</option>
+                        <option value="Contratista">Contratista</option>
+                        <option value="Director administrativo">Director administrativo</option>
+                        <option value="Director operativo">Director operativo</option>
+                        <option value="Gerente">Gerente</option>
+                        <option value="Jefe de oficina">Jefe de oficina</option>
+                        <option value="Operario">Operario</option>
+                        <option value="Practicante">Practicante</option>
+                        <option value="Profesional especializado">Profesional especializado</option>
+                        <option value="Profesional universitario">Profesional universitario</option>
+                        <option value="Secretario">Secretario</option>
+                        <option value="Secretario ejecutivo">Secretario ejecutivo</option>
+                        <option value="Secretario general">Secretario general</option>
+                        <option value="Subgerente">Subgerente</option>
+                        <option value="Técnico operativo">Técnico operativo</option>
                     </select>
 
                     <label for="comments" class="label">Observaciones</label>
                     <input type="text" name="comments"  required class="input">
 
                     <button type="submit" class="button">
-                        <i class="icon-buttom"><img src="/img/user_icon.png" alt="user-button" class="icon">   Agregar</i>
+                        <i class="icon-buttom"><img src="/img/newUser_icon.png" alt="user-button" class="icon">   Agregar</i>
                     </button>
-
-                    <!-- <input type="submit" value="Agregar" class="button"> -->
 
                     <button class="button">
                         <a href="/positions" class="icon-buttom">

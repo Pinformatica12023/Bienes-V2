@@ -17,14 +17,39 @@
     </head>
     <body>
 
+        <nav class="nav-container">
+
+            <a href="/" class="nav-logo">
+                <img src="/img/logo_FLA.png" alt="Logo" class="logo-image">
+            </a>
+
+            <ul class="horizontal-currency">
+                 
+                <li><a href="/positions">
+                    <img src="/img/user_icon.png" alt="" class="icon">Funcionarios</a></li>
+
+                <li><a href="/under_construction.html">
+                    <img src="/img/transfer_icon.png" alt="" class="icon">Traslados</a></li>
+
+                <li><a href="/under_construction.html">
+                    <img src="/img/email_icon.png" alt="" class="icon">Correos</a></li>
+
+                <% if (user) { %>
+                <li class="user_title"><%= user.user_name %></li>
+
+                <li><a href="/signOut">
+                    <img src="/img/close_icon.png" alt="" class="icon">Cerrar sesión</a></li>
+                <% } %>
+            </ul>
+        </nav>
+
        <div>
-            <h1 class="sub-title">
-                <img src="/img/logo_FLA.png" alt="" class="img-logo">Funcionarios</h1>
+            <h1 class="sub-title">Funcionarios</h1>
        </div>
 
        <button class="button">
             <a href="/positions/new" class="icon-buttom">
-            <img src="/img/user_icon.png" alt="user-button" class="icon">   Agregar</a>
+            <img src="/img/newUser_icon.png" alt="user-button" class="icon">   Agregar</a>
        </button>
 
        <button class="button">
@@ -54,8 +79,9 @@
                         <td>
                             <a href="/positions/<%= device.identificationNumber %>/edit" class="icon-buttom">
                                 <img src="/img/edit_icon.png" alt="edit-buttom" class="icon">   Editar</a>
-                            <a href="/positions/<%= device.identificationNumber %>/delete">  
-                                <img src="/img/cancel_icon.png" alt="delete-icon" class="icon">   Eliminar</a>
+
+                            <a href="/positions/<%= device.identificationNumber %>/delete" class="icon-buttom">  
+                                <img src="/img/delete_icon.png" alt="delete-icon" class="icon">   Eliminar</a>
                         </td>
                     </tr>
                     <% }); %>

@@ -28,12 +28,12 @@ body {
 .form-container {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    width: 300px;
     border: 1px solid var(--primary-color);
-    border-radius: 5%;
+    border-radius: 1%;
     padding: 30px;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.8);
+    margin: 40px 0 20px 0;
 }
 .logo {
     width: 150px;
@@ -85,20 +85,23 @@ body {
     color: var(--black)
 }
 /*main page*/
-nav {
+/*nav {
     max-width: 900px;
     margin: 50px auto;
-}
+}*/
 .nav-container {
     border: 1px solid var(--primary-color);
-    border-radius: 10px;
-    padding-top: 10px;
+    padding: 0 20px;
     background-color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
 }
 .horizontal-currency {
     list-style: none;
     display: flex;
     justify-content: space-around;
+    margin-top: -40px;
+    padding: 10px;
+
 }
 .horizontal-currency > li > a {
     text-decoration: none;
@@ -125,10 +128,8 @@ nav {
     margin: -20px -50px -10px -50px;
 }
 .sub-title {
-    max-width: 900px;
-    margin: 50px auto;
+    margin: auto;
     border: 1px solid var(--primary-color);
-    border-radius: 10px;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
@@ -182,7 +183,8 @@ nav {
 .icon {
     width: 20px;
     height: 20px;
-    vertical-align: middle;
+    vertical-align: bottom;
+    padding-right: 5px;
 }
 
 /* Contenedor de nuevo funcionario */
@@ -197,11 +199,12 @@ nav {
     padding: 0.75rem 1.5rem;
     min-width: 10ch; 
     min-height: 44px;
-    margin: 15px auto;
+    margin: 30px auto;
     font-size: 16px;
     font-weight: bold;
     border-color: var(--secondary-color);
     border-radius: 5px;
+    text-align: center;
 }
 .button-user {
     padding: 0.75rem 1.5rem;
@@ -214,3 +217,12 @@ nav {
     border-radius: 5px;
     background-image: url("/img/user_icon.png") ;
 }
+.nav-logo {
+    margin-right: 30px;
+}
+.logo-image {
+    height: 40px;
+    width: auto;
+    margin: 10px 0 -10px 0;
+}
+

@@ -17,18 +17,27 @@
     </head>
     <body>
         <nav class="nav-container">
+
+            <a href="/" class="nav-logo">
+                <img src="/img/logo_FLA.png" alt="Logo" class="logo-image">
+            </a>
+
             <ul class="horizontal-currency">
-                <li>
-                    <a href="/">
-                        <img src="/img/logofla.png" alt="logo_fla" class="img-logo">
-                    </a>
-                </li> 
-                <li><a href="/positions">Funcionarios</a></li>
-                <li><a href="/under_construction.html">Traslados</a></li>
-                <li><a href="/under_construction.html">Correos</a></li>
+                 
+                <li><a href="/positions">
+                    <img src="/img/user_icon.png" alt="" class="icon">Funcionarios</a></li>
+
+                <li><a href="/under_construction.html">
+                    <img src="/img/transfer_icon.png" alt="" class="icon">Traslados</a></li>
+
+                <li><a href="/under_construction.html">
+                    <img src="/img/email_icon.png" alt="" class="icon">Correos</a></li>
+
                 <% if (user) { %>
                 <li class="user_title"><%= user.user_name %></li>
-                <li><a href="/signOut">Cerrar sesión</a></li>
+
+                <li><a href="/signOut">
+                    <img src="/img/close_icon.png" alt="" class="icon">Cerrar sesión</a></li>
                 <% } %>
             </ul>
         </nav>
