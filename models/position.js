@@ -36,41 +36,6 @@ const schema = {
     }
 }
 
-/*
-const schema = {
-    id: {
-        type: DataTypes.BIGINT,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false
-    },
-    identification: {
-        type: DataTypes.BIGINT,
-        unique: true,
-        allowNull: true
-    },
-    email: {
-        type: DataTypes.STRING,
-        unique: true,
-        allowNull: true,
-        validate: { isEmail: true }
-    },
-    nombres: {
-        type: DataTypes.STRING,
-        allowNull:true
-    },
-    observations: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    state: {
-       type: DataTypes.STRING,
-       allowNull: true,
-       defaultValue: 'ACTIVO' 
-    }
-}
-*/
-
 class Position extends Model {}
 
 Position.init(schema, { sequelize: databaseConnection });

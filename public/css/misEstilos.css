@@ -1,0 +1,228 @@
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --primary-color: #009A44;
+    --secondary-color: #C7C7C7;
+    --neutral-color: #e5e5e5;
+    --error-color: #DC3545;
+    --other-color: #00b34d;
+    --sm: 14px;
+    --md: 16px;
+    --lg: 30px;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    color: var(--black);
+    background-image: url(/img/fla_inicio.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.login {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    border-radius: 50% var(--neutral-color);
+}
+.form-container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    border: 1px solid var(--primary-color);
+    border-radius: 1%;
+    padding: 30px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 40px 0 20px 0;
+}
+.logo {
+    width: 150px;
+    justify-self: center;
+    margin-bottom: 20px;
+    display: none;
+    border-radius: 50%;
+    
+}
+.title {
+    font-size: var(--lg);
+    margin-bottom: 20px;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+}
+.label {
+    font-size: var(--sm);
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+.input {
+    background-color: var(--neutral-color);
+    border-color: rgb(219, 216, 216);
+    border-radius: 8px;
+    height: 30px;
+    font-size: var(--md);
+    padding: 6px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+.submit {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    height: 30px;
+    font-size: var(--md);
+    padding: 6px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    text-align: center;
+    cursor: pointer;
+}
+.loss a, .new-user a {
+    text-decoration: none;
+    text-align: center;
+    color: var(--black)
+}
+/*main page*/
+/*nav {
+    max-width: 900px;
+    margin: 50px auto;
+}*/
+.nav-container {
+    border: 1px solid var(--primary-color);
+    padding: 0 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+}
+.horizontal-currency {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin-top: -40px;
+    padding: 10px;
+
+}
+.horizontal-currency > li > a {
+    text-decoration: none;
+    color: var(--black)
+}
+.vertical-menu {
+    position: absolute;
+    display: none;
+    list-style: none;
+    width: 200px;
+}
+.horizontal-currency li:hover .vertical-menu {
+    display: block;
+}
+.vertical-menu li a {
+    display: block;
+    color: var(--primary-color);
+    padding: 15px 15px 15px 15px;
+    text-decoration: none;
+}
+.img-logo {
+    height: 40px;
+    width: 80px;
+    margin: -20px -50px -10px -50px;
+}
+.sub-title {
+    margin: auto;
+    border: 1px solid var(--primary-color);
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+.user_title {
+    color: var(--primary-color);
+}
+
+/* Tabla */
+.table {
+    width: 80%;
+    margin:auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+.table thead {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: left;
+}
+.table th, .table td, .icon-buttom {
+    padding: 12px 15px;
+    text-align: center;
+    text-decoration: none;
+}
+.table tbody tr:nth-child(odd) {
+    background-color: var(--neutral-color);
+}
+.table tbody tr:nth-child(even) {
+    background-color: var(--neutral-color);
+}
+.table th, .table td {
+    border: 1px solid #ddd;
+}
+.table td:empty {
+    background-color: var(--white);
+}
+/* .table-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 100px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+} */
+
+.icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: bottom;
+    padding-right: 5px;
+}
+
+/* Contenedor de nuevo funcionario */
+.new-container {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    border-radius: 50% var(--neutral-color);  
+}
+/*Botones*/
+.button {
+    padding: 0.75rem 1.5rem;
+    min-width: 10ch; 
+    min-height: 44px;
+    margin: 30px auto;
+    font-size: 16px;
+    font-weight: bold;
+    border-color: var(--secondary-color);
+    border-radius: 5px;
+    text-align: center;
+}
+.button-user {
+    padding: 0.75rem 1.5rem;
+    min-width: 10ch; 
+    min-height: 44px;
+    margin: 15px auto;
+    font-size: 16px;
+    font-weight: bold;
+    border-color: var(--secondary-color);
+    border-radius: 5px;
+    background-image: url("/img/user_icon.png") ;
+}
+.nav-logo {
+    margin-right: 30px;
+}
+.logo-image {
+    height: 40px;
+    width: auto;
+    margin: 10px 0 -10px 0;
+}
+
