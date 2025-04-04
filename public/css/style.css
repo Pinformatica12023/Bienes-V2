@@ -12,18 +12,14 @@
 }
 
 /* Logo SignIn y SingUp */
-.img-fluid {
-    max-width: 50%;
-    height: auto;
-    margin-bottom:3rem;
+.container-log {
+    background-color: #f5f6f7;
+    padding: 20px;
 }
-.table {
-    text-align: center;
+.buttons {
+    margin: 32px;
 }
 
-a {
-  color: #198754;  
-}
 /* Adaptable responsivo */
 
 @media screen and (max-width: 767px) {
@@ -31,14 +27,3 @@ a {
         display: none;
     }
 }
-
-.gradient-custom {
-    /* fallback for old browsers */
-    background: #198754;
-    
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, white, #198754);
-    
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #198754, white, #198754)
-    }

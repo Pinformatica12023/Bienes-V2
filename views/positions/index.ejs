@@ -49,16 +49,19 @@
       </nav>
 
       <form class="d-flex">
-        <button class="btn btn-outline-success position-absolute m-3" type="submit">
-            <a href="/positions/new" class="text-decoration-none"><i class="bi bi-person-add"></i>  Agregar</a>
+        
+        <button type="submit" class="btn btn-outline-success position-absolute buttons"  onclick="window.location.href='/positions/new'">
+          <i class="bi bi-person-add"></i>  Agregar
         </button>
-        <button class="btn btn-outline-success position-absolute end-0 m-3" type="submit">
-            <a href="/" class="text-decoration-none"><i class="bi bi-x-circle"></i>  Cancelar</a>
+        
+        <button type="button" class="btn btn-outline-secondary position-absolute end-0 buttons"  onclick="window.location.href='/positions'">
+          <i class="bi bi-x-circle"></i>  Cancelar
         </button>
+
       </form>
 
       <div class="mt-5 pt-3">
-        <div class="mx-auto d-flex justify-content-center align-items-center flex-grow-1 w-75">
+        <div class="mx-auto d-flex justify-content-center align-items-center flex-grow-1 w-75 text-center">
             <table class="table">
                 <thead>
                   <tr>

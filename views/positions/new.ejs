@@ -2,86 +2,149 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Inventario Bienes</title>
-        <link href="/css/style.css" rel="stylesheet" type="text/css">
+        <meta name="author" content="Practicante informatica 1">
+        <meta name="description" content="Inventario Bienes FLA">
+        <meta name="keywords" content="Bienes">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Funcionarios | Fábrica de Licores de Antioquia</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="icon" type="image/x-icon" href="/img/logo_FLA.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-        <link rel="icon" type="image/png" href="/img/logo_FLA.png">
-        <style>
-          .logo {
-              display: block;
-          }                
-        </style>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap" rel="stylesheet">
     </head>
     <body>
+        <div class="container">
+            <main>
+              <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4" src="/img/logo_FLA.png" alt="" width="72" height="57">
+                <h1 class="h2">Formulario de ingreso</h1>
+              </div>
 
-       <div class="new-container">
-        
-            <div class="form-container">
-                <img src="/img/logo_FLA.png" alt="logo" class="logo">
+              <form action="/positions" method="post">
+                <div class="row g-5 justify-content-center">
+                    <div class="col-md-7 col-lg-8">
+                      <form class="needs-validation" novalidate>
+                        <div class="row g-3">
 
-                <form action="/positions" method="post" class="form">
+                          <div class="col-sm-6">
+                            <label for="identificationNumber" class="form-label">Identificación</label>
+                            <input type="number" class="form-control" id="identificationNumber" name="identificationNumber" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                              Valid first name is required.
+                            </div>
+                          </div>
+              
+                          <div class="col-sm-6">
+                            <label for="name" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                              Valid last name is required.
+                            </div>
+                          </div>
+              
+                          <div class="col-12">
+                            <label for="email" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="ejemplo@fla.com.co">
+                            <div class="invalid-feedback">
+                              Please enter a valid email address for shipping updates.
+                            </div>
+                          </div>
+              
+                          <div class="col-12">
+                            <label for="comments" class="form-label">Observaciones</label>
+                            <input type="text" class="form-control" id="comments" name="comments">
+                          </div>
+              
+                          <div class="col-md-4 text-center">
+                            <label for="subManagement" class="form-label">Subgerencia</label>
+                            <select class="form-select" id="subManagement" required name="subManagement">
+                              <option value="">Choose...</option>
+                              <option value="Despacho del gerente">Despacho del gerente</option>
+                              <option value="Secretaria general">Secretaria general</option>
+                              <option value="Subgerencia administrativa y financiera">Subgerencia administrativa y financiera</option>
+                              <option value="Subgerencia comercial">Subgerencia comercial</option>
+                              <option value="Subgerencia mercadeo">Subgerencia mercadeo</option>
+                              <option value="Subgerencia producción">Subgerencia producción</option>
+                            </select>
+                          </div>
+              
+                          <div class="col-md-4 text-center">
+                            <label for="dependecy" class="form-label">Dependencia</label>
+                            <select class="form-select" id="dependecy" required name="dependecy">
+                              <option value="">Choose...</option>
+                              <option value="Oficina de comunicaciones">Oficina de comunicaciones</option>
+                              <option value="Oficina de control interno">Oficina de control interno</option>
+                              <option value="Oficina de planeación">Oficina de planeación</option>
+                              <option value="Despacho del gerente">Despacho del gerente</option>
+                              <option value="Dirección de envasado y añejamiento">Dirección de envasado y añejamiento</option>
+                              <option value="Tecnologia de la información">Tecnologia de la información</option>
+                              <option value="Secretaria General">Secretaria General</option>
+                              <option value="Dirección de apoyo contractual">Dirección de apoyo contractual</option>
+                              <option value="Dirección financiera y de planeación">Dirección financiera y de planeación</option>
+                              <option value="Dirección de aseguramiento de la calidad">Dirección de aseguramiento de la calidad</option>
+                              <option value="Dirección de logística">Dirección de logística</option>
+                              <option value="Dirección de gestión humana">Dirección de gestión humana</option>
+                              <option value="Recursos corporativos">Recursos corporativos</option>
+                              <option value="Subgerencia de producción - Dirección mantenimiento">Subgerencia de producción - Dirección mantenimiento</option>
+                              <option value="Subgerencia Comercial">Subgerencia Comercial</option>
+                              <option value="Dirección de marca - Ron">Dirección de marca - Ron</option>
+                              <option value="Subgerencia de mercadeo - Innovación">Subgerencia de mercadeo - Innovación</option>
+                              <option value="Dirección de ventas">Dirección de ventas</option>
+                              <option value="Dirección de negocios internacionales">Dirección de negocios internacionales</option>
+                            </select>
+                            <!-- <div class="invalid-feedback">
+                              Please provide a valid state.
+                            </div> -->
+                          </div>
+              
+                          <div class="col-md-4 text-center">
+                            <label for="charge" class="form-label">Cargo</label>
+                            <select class="form-select" id="charge" required name="charge">
+                              <option value="">Choose...</option>
+                              <option value="Almacenista general">Almacenista general</option>
+                              <option value="Almacenista T.O">Almacenista T.O</option>
+                              <option value="Auxiliar administrativo">Auxiliar administrativo</option>
+                              <option value="Auxiliar de servicio generales">Auxiliar de servicio generales</option>
+                              <option value="Auxiliar de sostenimiento">Auxiliar de sostenimiento</option>
+                              <option value="Conductor">Conductor</option>
+                              <option value="Contratista">Contratista</option>
+                              <option value="Director administrativo">Director administrativo</option>
+                              <option value="Director operativo">Director operativo</option>
+                              <option value="Gerente">Gerente</option>
+                              <option value="Jefe de oficina">Jefe de oficina</option>
+                              <option value="Operario">Operario</option>
+                              <option value="Practicante">Practicante</option>
+                              <option value="Profesional especializado">Profesional especializado</option>
+                              <option value="Profesional universitario">Profesional universitario</option>
+                              <option value="Secretario">Secretario</option>
+                              <option value="Secretario ejecutivo">Secretario ejecutivo</option>
+                              <option value="Secretario general">Secretario general</option>
+                              <option value="Subgerente">Subgerente</option>
+                              <option value="Técnico operativo">Técnico operativo</option>
+                            </select>
+                          </div>
+    
+                        </div>
+              
+                        <hr class="my-4">
+                        
+                        <button type="submit" class="btn btn-outline-success mx-auto d-block w-50">
+                            Agregar 
+                        </button>
+                        
+                        <button type="button" class="btn btn-outline-secondary mx-auto d-block w-50 m-3"  onclick="window.location.href='/positions'">
+                            Cancelar
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+              </form>
+            </main>
+          </div>
 
-                    <label for="identificationNumber" class="label">Identificación</label>
-                    <input type="number" name="identificationNumber"  required class="input">
-
-                    <label for="name" class="label">Nombre</label>
-                    <input type="text" name="name"  required class="input">
-
-                    <label for="email" class="label">Email</label>
-                    <input type="text" name="email"  required class="input">
-
-                    <label for="subManagement" class="label">Subgerencia</label>
-                    <select name="subManagement" id="" for="subManagement" class="button">
-                        <option value="Despacho del gerente">Despacho del gerente</option>
-                        <option value="Secretaria general">Secretaria general</option>
-                        <option value="Subgerencia administrativa y financiera">Subgerencia administrativa y financiera</option>
-                        <option value="Subgerencia comercial">Subgerencia comercial</option>
-                        <option value="Subgerencia mercadeo">Subgerencia mercadeo</option>
-                        <option value="Subgerencia producción">Subgerencia producción</option>
-                    </select>
-                
-                    <select name="charge" id="" for="charge" class="button">
-                        <option value="Almacenista general">Almacenista general</option>
-                        <option value="Almacenista T.O">Almacenista T.O</option>
-                        <option value="Auxiliar administrativo">Auxiliar administrativo</option>
-                        <option value="Auxiliar de servicio generales">Auxiliar de servicio generales</option>
-                        <option value="Auxiliar de sostenimiento">Auxiliar de sostenimiento</option>
-                        <option value="Conductor">Conductor</option>
-                        <option value="Contratista">Contratista</option>
-                        <option value="Director administrativo">Director administrativo</option>
-                        <option value="Director operativo">Director operativo</option>
-                        <option value="Gerente">Gerente</option>
-                        <option value="Jefe de oficina">Jefe de oficina</option>
-                        <option value="Operario">Operario</option>
-                        <option value="Practicante">Practicante</option>
-                        <option value="Profesional especializado">Profesional especializado</option>
-                        <option value="Profesional universitario">Profesional universitario</option>
-                        <option value="Secretario">Secretario</option>
-                        <option value="Secretario ejecutivo">Secretario ejecutivo</option>
-                        <option value="Secretario general">Secretario general</option>
-                        <option value="Subgerente">Subgerente</option>
-                        <option value="Técnico operativo">Técnico operativo</option>
-                    </select>
-
-                    <label for="comments" class="label">Observaciones</label>
-                    <input type="text" name="comments"  required class="input">
-
-                    <button type="submit" class="button">
-                        <i class="icon-buttom"><img src="/img/newUser_icon.png" alt="user-button" class="icon">   Agregar</i>
-                    </button>
-
-                    <button class="button">
-                        <a href="/positions" class="icon-buttom">
-                            <img src="/img/cancel_icon.png" alt="user-button" class="icon">   Cancelar</a>
-                    </button>
-
-                </form>
-            
-            </div>
-       </div>
-
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous"></script>
     </body>
 </html>
