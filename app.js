@@ -4,6 +4,7 @@ import session from "express-session";
 import databaseConnection from "./config/database.js";
 import Position from "./models/position.js";
 import User from "./models/user.js";
+import Transfer from "./models/transfer.js"
 
 const app = express();
 const PORT = 3001;
@@ -179,6 +180,35 @@ app.get("/positions/:identificationNumber/delete", requireAuthentication, async 
         res.redirect("/positions");
     } catch(error) {
         throw error;
+    }
+});
+
+// Ruta para listar los traslados
+app.get("/transfers", requireAuthentication, async (req, res) => {
+    try {
+        const transfer = await Transfer.findAll();
+
+        res.render("transfers/index", { transfer, user: req.user })
+    } catch(error) {
+        next(error);
+    }
+});
+
+// Ruta para el nuevo traslado
+app.get("/transfers/new", requireAuthentication, (req, res) => {
+    res.render("transfers/new", { user: req.user });
+});
+
+// Ruta para crear un nuevo traslado
+app.post("/transfers", requireAuthentication, async (req, res) => {
+    try {
+        const transfer = Transfer.build(req.body);
+
+        await transfer.save();
+
+        res.redirect("/transfers")
+    } catch(error) {
+        next(error);
     }
 });
 

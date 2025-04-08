@@ -20,7 +20,8 @@ const schema = {
     },
     email: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     comments: {
         type: DataTypes.STRING
