@@ -15,6 +15,52 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap" rel="stylesheet">
     </head>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        const subManagementSelect = document.getElementById("subManagement");
+        const dependencySelect = document.getElementById("dependency");
+      
+        let dependencyData = {};
+      
+        try {
+          // 🔹 Cargar subgerencias
+          const subResponse = await fetch("/utils/submanagements");
+          const subgerencias = await subResponse.json();
+      
+          subgerencias.forEach(sub => {
+            const option = document.createElement("option");
+            option.value = sub;
+            option.textContent = sub;
+            subManagementSelect.appendChild(option);
+          });
+      
+          // 🔹 Cargar dependencias
+          const depResponse = await fetch("/utils/submanagement-dependencies");
+          dependencyData = await depResponse.json();
+      
+        } catch (error) {
+          console.error("Error al cargar las subgerencias o dependencias:", error);
+        }
+      
+        // 🔹 Cuando cambia la subgerencia, actualizar dependencias
+        subManagementSelect.addEventListener("change", () => {
+          const selectedSubManagement = subManagementSelect.value;
+          const dependencies = dependencyData[selectedSubManagement] || [];
+      
+          dependencySelect.innerHTML = '<option value="">Seleccionar...</option>';
+      
+          dependencies.forEach(dep => {
+            const option = document.createElement("option");
+            option.value = dep;
+            option.textContent = dep;
+            dependencySelect.appendChild(option);
+          });
+        });
+      });
+      </script>
+       
+
     <body>
         <div class="container">
             <main>
@@ -26,7 +72,7 @@
               <form action="/positions" method="post">
                 <div class="row g-5 justify-content-center">
                     <div class="col-md-7 col-lg-8">
-                      <form class="needs-validation" novalidate>
+  
                         <div class="row g-3">
 
                           <div class="col-sm-6">
@@ -60,44 +106,16 @@
               
                           <div class="col-md-4 text-center">
                             <label for="subManagement" class="form-label">Subgerencia</label>
-                            <select class="form-select" id="subManagement" required name="subManagement">
+                            <select class="form-select" id="subManagement" name="subManagement" required>
                               <option value="">Seleccionar...</option>
-                              <option value="Despacho del gerente">Despacho del gerente</option>
-                              <option value="Secretaria general">Secretaria general</option>
-                              <option value="Subgerencia administrativa y financiera">Subgerencia administrativa y financiera</option>
-                              <option value="Subgerencia comercial">Subgerencia comercial</option>
-                              <option value="Subgerencia mercadeo">Subgerencia mercadeo</option>
-                              <option value="Subgerencia producción">Subgerencia producción</option>
                             </select>
                           </div>
               
                           <div class="col-md-4 text-center">
-                            <label for="dependecy" class="form-label">Dependencia</label>
-                            <select class="form-select" id="dependecy" required name="dependecy">
+                            <label for="dependency" class="form-label">Dependencia</label>
+                            <select class="form-select" id="dependency" name="dependency" required>
                               <option value="">Seleccionar...</option>
-                              <option value="Oficina de comunicaciones">Oficina de comunicaciones</option>
-                              <option value="Oficina de control interno">Oficina de control interno</option>
-                              <option value="Oficina de planeación">Oficina de planeación</option>
-                              <option value="Despacho del gerente">Despacho del gerente</option>
-                              <option value="Dirección de envasado y añejamiento">Dirección de envasado y añejamiento</option>
-                              <option value="Tecnologia de la información">Tecnologia de la información</option>
-                              <option value="Secretaria General">Secretaria General</option>
-                              <option value="Dirección de apoyo contractual">Dirección de apoyo contractual</option>
-                              <option value="Dirección financiera y de planeación">Dirección financiera y de planeación</option>
-                              <option value="Dirección de aseguramiento de la calidad">Dirección de aseguramiento de la calidad</option>
-                              <option value="Dirección de logística">Dirección de logística</option>
-                              <option value="Dirección de gestión humana">Dirección de gestión humana</option>
-                              <option value="Recursos corporativos">Recursos corporativos</option>
-                              <option value="Subgerencia de producción - Dirección mantenimiento">Subgerencia de producción - Dirección mantenimiento</option>
-                              <option value="Subgerencia Comercial">Subgerencia Comercial</option>
-                              <option value="Dirección de marca - Ron">Dirección de marca - Ron</option>
-                              <option value="Subgerencia de mercadeo - Innovación">Subgerencia de mercadeo - Innovación</option>
-                              <option value="Dirección de ventas">Dirección de ventas</option>
-                              <option value="Dirección de negocios internacionales">Dirección de negocios internacionales</option>
                             </select>
-                            <!-- <div class="invalid-feedback">
-                              Please provide a valid state.
-                            </div> -->
                           </div>
               
                           <div class="col-md-4 text-center">
@@ -138,7 +156,7 @@
                         <button type="button" class="btn btn-outline-secondary mx-auto d-block w-50 m-3"  onclick="window.location.href='/positions'">
                             Cancelar
                         </button>
-                      </form>
+                    
                     </div>
                   </div>
               </form>

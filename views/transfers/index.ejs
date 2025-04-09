@@ -31,6 +31,9 @@
                 <a class="nav-link" href="/positions"><i class="bi bi-people"></i>  Funcionarios</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="/items"><i class="bi bi-archive"></i>  Activos</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="/transfers"><i class="bi bi-box-seam"></i>  Traslados</a>
               </li>
               <li class="nav-item">
@@ -78,10 +81,12 @@
                     <td><%= device.name%></td>
                     <td><%= device.email%></td>
                     <td><%= device.charge%></td>
+                    <!--
                     <td>
                         <a href="/positions/<%= device.identificationNumber %>/edit" class="icon-buttom text-decoration-none">
                             </a>
                     </td>
+                    -->
                   </tr>
                   <% }); %>
                 </tbody>

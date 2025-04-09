@@ -5,6 +5,8 @@ import databaseConnection from "./config/database.js";
 import Position from "./models/position.js";
 import User from "./models/user.js";
 import Transfer from "./models/transfer.js"
+import Item from "./models/item.js"
+import utilsRoutes from "./routes/utilsRoutes.js";
 
 const app = express();
 const PORT = 3001;
@@ -19,6 +21,7 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.urlencoded({ extended: true}));
+app.use("/utils", utilsRoutes);
 
 // Aqui termina la configuración de la aplicación
 
@@ -211,7 +214,24 @@ app.post("/transfers", requireAuthentication, async (req, res) => {
         next(error);
     }
 });
+// Ruta para nuevo activo
+app.get("/items", requireAuthentication, (req, res) => {
+    res.render("items", { user: req.user });
+});
 
+
+// Ruta para crear activo
+app.post("/items", requireAuthentication, async (req, res) => {
+    try {
+        const item = Item.build(req.body);
+
+        await item.save();
+
+        res.redirect("/")
+    } catch (error) {
+        next(error);
+    }
+});
 // fin de rutas 
 
 // Función para iniciar la aplicación
