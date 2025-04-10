@@ -215,9 +215,9 @@ app.post("/transfers", requireAuthentication, async (req, res) => {
     }
 });
 // Ruta para nuevo activo
-app.get("/items", requireAuthentication, (req, res) => {
-    res.render("items", { user: req.user });
-});
+//app.get("/items", requireAuthentication, (req, res) => {
+//    res.render("items", { user: req.user });
+//});
 
 
 // Ruta para crear activo
@@ -227,11 +227,22 @@ app.post("/items", requireAuthentication, async (req, res) => {
 
         await item.save();
 
-        res.redirect("/")
+        res.redirect("/items")
     } catch (error) {
         next(error);
     }
 });
+
+app.get("/items", requireAuthentication, async (req, res) => {
+    try {
+        const item = await Item.findAll();
+        res.render("items", { items: item, user: req.user });
+    } catch(error) {
+        next(error);
+    }
+});
+  
+
 // fin de rutas 
 
 // Función para iniciar la aplicación

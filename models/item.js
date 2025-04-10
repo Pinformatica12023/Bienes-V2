@@ -22,6 +22,9 @@ const schema = {
     },
     description: {
         type: DataTypes.STRING
+    },
+    tagType: {
+        type: DataTypes.ENUM('Gobernación', 'FLA')
     }
 }
 

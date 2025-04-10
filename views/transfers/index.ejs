@@ -50,7 +50,29 @@
           </div>
         </div>
       </nav>
+      
+      <form class="container-fluid px-0">
+        <div class="row gx-2 align-items-center">
+          
+          <div class="col text-start">
+            <a href="/transfers/new" class="btn btn-outline-success buttons" role="button">
+              <i class="bi bi-box-seam"></i> Agregar
+            </a>
+          </div>
+          
+          <div class="col text-center">
+            <h4 class="m-0">Traslados</h4>
+          </div>
+          
+          <div class="col text-end">
+            <a href="/" class="btn btn-outline-secondary buttons" role="button">
+              <i class="bi bi-x-circle"></i> Cancelar
+            </a>
+          </div>
+        </div>
+      </form>
 
+            <!--
       <form class="d-flex">
         
         <a href="/transfers/new" class="btn btn-outline-success buttons" role="button">
@@ -62,18 +84,20 @@
         </a>
 
       </form>
+      -->
 
       <div class="mt-5 pt-3">
         <div class="mx-auto d-flex justify-content-center align-items-center flex-grow-1 w-75 text-center">
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">Identificación</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Bienes</th>
                     <th scope="col">Acciones</th>
+                    <th scope="col">Identificación</th>
+                    <th scope="col">Funcionario</th>
+                    <th scope="col">Número de bienes</th>
                   </tr>
                 </thead>
+                <!--
                 <tbody class="table-group-divider">
                     <% transfer.forEach(device => { %>
                     <tr>
@@ -81,15 +105,14 @@
                     <td><%= device.name%></td>
                     <td><%= device.email%></td>
                     <td><%= device.charge%></td>
-                    <!--
                     <td>
                         <a href="/positions/<%= device.identificationNumber %>/edit" class="icon-buttom text-decoration-none">
                             </a>
                     </td>
-                    -->
                   </tr>
                   <% }); %>
                 </tbody>
+                -->
             </table>
         </div>
       </div>
