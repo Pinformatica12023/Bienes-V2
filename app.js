@@ -20,242 +20,213 @@ app.use(session({
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.set("views", "./views");
-app.use(express.urlencoded({ extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use("/utils", utilsRoutes);
 
-// Aqui termina la configuración de la aplicación
-
-// Middleware que se encarga de comprobar si un usuario
-// debe iniciar sesión
-const requireAuthentication = async(req, res, next) => {
-    if(req.session && req.session.userId) {
+// Middleware que se encarga de comprobar si un usuario debe iniciar sesión
+const requireAuthentication = async (req, res, next) => {
+    if (req.session && req.session.userId) {
         try {
             const user = await User.findByPk(req.session.userId);
 
-            if(user) {
+            if (user) {
                 req.user = user;
-
                 next();
             } else {
                 res.redirect("/signIn");
             }
-        } catch(error) {
-            throw error
+        } catch (error) {
+            next(error);
         }
     } else {
         res.redirect("/signIn");
     }
-}
+};
 
-// Aqui comienzan las rutas
+// Rutas
 
-// Ruta a la página principal
 app.get("/", requireAuthentication, async (req, res) => {
     res.render("index", { user: req.user });
 });
 
-// Ruta de formulario de registro de usuario
 app.get("/signUp", (req, res) => {
     res.render("signUp");
 });
 
-// Ruta que guarda el usuario en la base de datos
-
-app.post("/users", async(req, res) => {
+app.post("/users", async (req, res) => {
     try {
         const user = User.build(req.body);
-
-        await user.save()
-
-        //Con esto el nuevo usuario no tiene que iniciar sesión
+        await user.save();
 
         req.session.userId = user.id;
         req.user = user;
-        
+
         res.redirect("/");
-    } catch(error) {
+    } catch (error) {
         throw error;
     }
 });
 
-// Ruta para el formulario de inicio de sesión 
 app.get("/signIn", (req, res) => {
     res.render("signIn", { error: null });
 });
 
-// Ruta para iniciar sesión 
 app.post("/sessions", async (req, res) => {
     try {
-      const { user_name, password } = req.body;
-      const user = await User.findOne({ where: { user_name } });
-  
-      // .autenticate es una funciona definida en el modelo User
-      if (user && user.authenticate(password)) {
-        req.session.userId = user.id;
-  
-        res.redirect("/");
-      } else {
-        res.render("signIn", { error: "Usuario o Contraseña incorrecta" });
-      }
-    } catch(error) {
-      throw error;
-    }
-  });
+        const { user_name, password } = req.body;
+        const user = await User.findOne({ where: { user_name } });
 
-// Ruta para cerrar sesión 
+        if (user && user.authenticate(password)) {
+            req.session.userId = user.id;
+            res.redirect("/");
+        } else {
+            res.render("signIn", { error: "Usuario o Contraseña incorrecta" });
+        }
+    } catch (error) {
+        throw error;
+    }
+});
+
 app.get("/signOut", requireAuthentication, (req, res) => {
     req.session.destroy();
-
     res.redirect("/");
 });
 
-// Ruta para listar los usuarios
 app.get("/users", requireAuthentication, async (req, res) => {
     try {
         const users = await User.findAll();
-
         res.render("users/index", { users, user: req.user });
-    } catch(error) {
+    } catch (error) {
         throw error;
     }
 });
 
-// Ruta para listar los funcionarios
-app.get("/positions", requireAuthentication, async (req, res) => {
-    try{
+app.get("/positions", requireAuthentication, async (req, res, next) => {
+    try {
         const position = await Position.findAll();
-
         res.render("positions/index", { position, user: req.user });
-    } catch(error) {
-        next(error);
-    }
-});
-
-// Ruta para agregar un nuevo funcionario
-app.get("/positions/new", requireAuthentication, (req, res) => {
-    res.render("positions/new", { user: req.user });
-});
-
-// Ruta para crear un nuevo funcionario
-app.post("/positions", requireAuthentication, async (req, res) => {
-    try {
-        const position = Position.build(req.body);
-
-        await position.save();
-
-        res.redirect("/positions");
-    } catch(error) {
-        next(error);
-    }
-});
-
-// Ruta para la edición de funcionario
-app.get("/positions/:identificationNumber/edit", requireAuthentication, async (req, res) => {
-    try {
-        const position = await Position.findByPk(req.params.identificationNumber);
-
-        res.render("positions/edit", { position, user: req.user});
-    } catch(error) {
-        next(error);
-    }
-});
-
-// Ruta para actualizar la información del funcionario
-app.post("/positions/:identificationNumber", requireAuthentication, async (req, res) => {
-    try {
-        const position = await Position.findByPk(req.params.identificationNumber);
-
-        await position.update(req.body);
-
-        res.redirect("/positions");
-    } catch(error) {
-        next(error);
-    }
-});
-
-// Ruta para eliminar un funcionario
-app.get("/positions/:identificationNumber/delete", requireAuthentication, async (req, res) => {
-    try {
-        const position = await Position.findByPk(req.params.identificationNumber);
-
-        await position.destroy();
-
-        res.redirect("/positions");
-    } catch(error) {
-        throw error;
-    }
-});
-
-// Ruta para listar los traslados
-app.get("/transfers", requireAuthentication, async (req, res) => {
-    try {
-        const transfer = await Transfer.findAll();
-
-        res.render("transfers/index", { transfer, user: req.user })
-    } catch(error) {
-        next(error);
-    }
-});
-
-// Ruta para el nuevo traslado
-app.get("/transfers/new", requireAuthentication, (req, res) => {
-    res.render("transfers/new", { user: req.user });
-});
-
-// Ruta para crear un nuevo traslado
-app.post("/transfers", requireAuthentication, async (req, res) => {
-    try {
-        const transfer = Transfer.build(req.body);
-
-        await transfer.save();
-
-        res.redirect("/transfers")
-    } catch(error) {
-        next(error);
-    }
-});
-// Ruta para nuevo activo
-//app.get("/items", requireAuthentication, (req, res) => {
-//    res.render("items", { user: req.user });
-//});
-
-
-// Ruta para crear activo
-app.post("/items", requireAuthentication, async (req, res) => {
-    try {
-        const item = Item.build(req.body);
-
-        await item.save();
-
-        res.redirect("/items")
     } catch (error) {
         next(error);
     }
 });
 
-app.get("/items", requireAuthentication, async (req, res) => {
+app.get("/positions/new", requireAuthentication, (req, res) => {
+    res.render("positions/new", { user: req.user });
+});
+
+app.post("/positions", requireAuthentication, async (req, res, next) => {
     try {
-        const item = await Item.findAll();
-        res.render("items", { items: item, user: req.user });
-    } catch(error) {
+        const position = Position.build(req.body);
+        await position.save();
+        res.redirect("/positions");
+    } catch (error) {
         next(error);
     }
 });
-  
 
-// fin de rutas 
+app.get("/positions/:identificationNumber/edit", requireAuthentication, async (req, res, next) => {
+    try {
+        const position = await Position.findByPk(req.params.identificationNumber);
+        res.render("positions/edit", { position, user: req.user });
+    } catch (error) {
+        next(error);
+    }
+});
+
+app.post("/positions/:identificationNumber", requireAuthentication, async (req, res, next) => {
+    try {
+        const position = await Position.findByPk(req.params.identificationNumber);
+        await position.update(req.body);
+        res.redirect("/positions");
+    } catch (error) {
+        next(error);
+    }
+});
+
+app.get("/positions/:identificationNumber/delete", requireAuthentication, async (req, res) => {
+    try {
+        const position = await Position.findByPk(req.params.identificationNumber);
+        await position.destroy();
+        res.redirect("/positions");
+    } catch (error) {
+        throw error;
+    }
+});
+
+app.get("/transfers", requireAuthentication, async (req, res, next) => {
+    try {
+        const transfer = await Transfer.findAll({
+            include: [
+                { model: Item },
+                { model: Position, as: "sender" },
+                { model: Position, as: "receiver" }
+            ]
+        });
+        res.render("transfers/index", { transfer, user: req.user });
+    } catch (error) {
+        next(error);
+    }
+});
+
+app.get("/transfers/new", requireAuthentication, (req, res) => {
+    res.render("transfers/new", { user: req.user });
+});
+
+app.post("/transfers", requireAuthentication, async (req, res, next) => {
+    try {
+        const transfer = Transfer.build(req.body);
+        await transfer.save();
+        res.redirect("/transfers");
+    } catch (error) {
+        next(error);
+    }
+});
+
+app.post("/items", requireAuthentication, async (req, res, next) => {
+    try {
+        const item = Item.build(req.body);
+        await item.save();
+        res.redirect("/items");
+    } catch (error) {
+        next(error);
+    }
+});
+
+app.get("/items", requireAuthentication, async (req, res, next) => {
+    try {
+        const item = await Item.findAll({
+            include: {
+                model: Transfer,
+                include: [
+                    { model: Position, as: "sender" },
+                    { model: Position, as: "receiver" },
+                ],
+            },
+        });
+
+        res.render("items", { items: item, user: req.user });
+    } catch (error) {
+        next(error);
+    }
+});
+
+// Middleware de manejo de errores global
+app.use((err, req, res, next) => {
+    console.error("Error capturado:", err.stack);
+    res.status(500).send("¡Algo salió mal en el servidor!");
+});
 
 // Función para iniciar la aplicación
 const init = async () => {
     try {
-      await databaseConnection.sync();
-      app.listen(PORT, () => {
-        console.log(`Servidor escuchando el puerto ${PORT}`)
-      });
-    } catch(error) {
-      throw error
+        await databaseConnection.sync();
+        app.listen(PORT, () => {
+            console.log(`Servidor escuchando el puerto ${PORT}`);
+        });
+    } catch (error) {
+        throw error;
     }
-  }
-  
-  // Aqui se inicia la apliacion
-  init();
+};
+
+// Inicio de la aplicación
+init();

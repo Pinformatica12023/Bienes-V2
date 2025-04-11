@@ -2,11 +2,14 @@ import { DataTypes, Model } from "sequelize";
 import databaseConnection from "../config/database.js";
 
 const schema = {
-    tag: {
+    id: {
         type: DataTypes.BIGINT,
-        allowNull: false,
-        unique: true,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
+    },
+    tag: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
     name: {
         type: DataTypes.STRING,
@@ -29,15 +32,35 @@ const schema = {
     date: {
         type: DataTypes.DATE,
         allowNull: false,
+    },
+    fromPositionId: {
+        type: DataTypes.BIGINT,
+        allowNull: false
+    },
+    toPositionId: {
+        type: DataTypes.BIGINT,
+        allowNull: false
     }
-    /*
-    offcial: {},
-    dependency: {},
-    comments: {}
-    */
 }
 
-class Transfer extends Model {}
+class Transfer extends Model {
+    static associate(models) {
+      Transfer.belongsTo(models.Item, {
+        foreignKey: "tag",
+        targetKey: "tag"
+      });
+  
+      Transfer.belongsTo(models.Position, {
+        foreignKey: "fromPositionId",
+        as: "sender"
+      });
+  
+      Transfer.belongsTo(models.Position, {
+        foreignKey: "toPositionId",
+        as: "receiver"
+      });
+    }
+  }
 
 Transfer.init(schema, { sequelize: databaseConnection });
 

@@ -28,7 +28,14 @@ const schema = {
     }
 }
 
-class Item extends Model {}
+class Item extends Model {
+    static associate(model) {
+        Item.hasMany(models.Transfer, {
+            foreignKey: "tag",
+            sourcekey: "tag",
+        });
+    }
+}
 
 Item.init(schema, { sequelize: databaseConnection });
 

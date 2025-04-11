@@ -56,7 +56,19 @@ const schema = {
     }
 };
 
-class Position extends Model { }
+class Position extends Model {
+    static associate(model) {
+        Position.hasMany(models.Transfer, {
+            foreignKey: "fromPositionId",
+            as: "sentTransfers",
+        });
+
+        Position.hasMany(models.Transfer, {
+            foreignKey: "toPositionId",
+            as: "receivedTransfers",
+        })
+    }
+}
 
 Position.init(schema, { sequelize: databaseConnection });
 
